@@ -14,6 +14,12 @@ getClientKey().then(clientKey => {
 
     // Can add request params to this object
     const pmReqConfig = {countryCode: urlParams.countryCode || DEFAULT_COUNTRY};
+    //Include optional configuration in the card configuration object. Add billing adress,card holder name
+    const cardConfiguration = {
+        hasHolderName: true, // Show the cardholder name field.
+        holderNameRequired: true, // Mark the cardholder name field as required.
+        billingAddressRequired: true // Show the billing address input fields and mark them as required.
+     };
     getPaymentMethods(pmReqConfig).then(async paymentMethodsResponse => {
 
         paymentMethodsResponse.paymentMethods.reverse();
@@ -27,6 +33,10 @@ getClientKey().then(clientKey => {
             paymentMethodsResponse,
             // removePaymentMethods: ['paysafecard', 'c_cash'],
             allowPaymentMethods: allowedPMS,
+            //Include the cardConfiguration 
+            paymentMethodsConfiguration: {
+                card: cardConfiguration
+            },
             onChange: state => {
                 updateStateContainer(state); // Demo purposes only
             },

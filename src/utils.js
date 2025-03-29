@@ -4,7 +4,7 @@ function setReturnUrl() {
     if (window.location.pathname === '/sessions/') {
         return window.location.href
     } else {
-        return window.location.href;//'https://your-company.com/'
+        return 'https://docs.adyen.com/';// Set the returnUrl
     }
 }
 
@@ -19,8 +19,8 @@ const paymentMethodsConfig = {
 };
 
 const paymentsDefaultConfig = {
-    shopperReference: 'Checkout Components sample code test',
-    reference: 'Checkout Components sample code test',
+    merchantAccount: 'AdyenRecruitmentCOM',
+    reference: 'YanmeiCui_adyenrecruitment',
     countryCode: 'NL',
     channel: 'Web',
     returnUrl: setReturnUrl(),
